@@ -1,0 +1,37 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-3"></div>
+    <div class="col-md-3">
+      <button class="form-control-sm" type="text" routerLink="/create-employee">Add</button>
+    </div>
+    <div class="col-md-3">
+      <input class="form-control-sm" type="text" [(ngModel)]="searchTerm" placeholder="search">
+    </div>
+  </div>
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Salary</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees | search:searchTerm">
+          <th scope="row">{{employee.id}}</th>
+          <td>{{employee.name}}</td>
+          <td>{{employee.address}}</td>
+          <td>{{employee.salary}}</td>
+          <td><button class="btn btn-success" (click)="updateEmployee(employee.id)">Edit</button>
+              <button class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
